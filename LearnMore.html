@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Services</title>
+  <link rel="stylesheet" href="LearnMoreStyles.css"> <!-- If you're using a shared stylesheet -->
+</head>
+<body>
+  <h1>Our Services</h1>
+  <p>Welcome! Here’s a breakdown of the services we offer:</p>
+
+  <section>
+    <h2>Twilight Photos</h2>
+    <p class="decription">Twilight photos capture a property in the soft, dramatic light just after sunset-highlighting warm interior glows, landscape lighting and striking skies. Use the slider to see the before and after!</p>
+
+    <div class="ba-container">
+      <div class="ba-img-wrapper">
+        <img src="TwilightBefore.JPG" class="ba-img before" alt="Before">
+        <img src="TwilightAfter.JPG" class="ba-img after" alt="After">
+        <div class="ba-slider"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Virtual Staging Photos</h2>
+    <p class="decription" >Transforms empty spaces into beautifully furnished rooms using realistic digital design. It helps buyers visualize the potential of a property. Use the slider to see the before and after!</p>
+
+    <div class="ba-container">
+      <div class="ba-img-wrapper">
+        <img src="VirtualStagingBefore.JPG" class="ba-img before" alt="Before">
+        <img src="VirtualStagingAfter.JPG" class="ba-img after" alt="After">
+        <div class="ba-slider"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Aerial Photos</h2>
+    <p>Offer a unique perspective, showcasing the full scope of property, its layout, and surrounding environment.</p>
+
+    <div class="ba-container">
+      <div class="ba-img-wrapper">
+        <img src="Aerial.JPG" class="ba-img before" >
+      </div>
+    </div>
+  </section>
+
+  <script>
+  window.onload = function () {
+
+  // Grab all sliders and their containers
+  const wrappers = document.querySelectorAll('.ba-img-wrapper');
+  const sliders = document.querySelectorAll('.ba-slider');
+  const afterImgs = document.querySelectorAll('.ba-img.after');
+
+  let ticking = false;
+  let isTouch = false;
+  let startX = 0;
+  let isDragging = false;
+
+  // Helper function to calculate the percentage and update the slider position
+  const updateSlider = (wrapper, slider, afterImg, x) => {
+    const rect = wrapper.getBoundingClientRect();
+    let position = x - rect.left; // Get the position relative to the wrapper
+    position = Math.max(0, Math.min(position, rect.width)); // Ensure within bounds
+    const percentage = (position / rect.width) * 100;
+
+    // Update the clip-path of the after image
+    afterImg.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
+
+    // Move the slider to match the touch/mouse position
+    slider.style.left = `${percentage}%`;
+  };
+
+  // Loop through each wrapper (slider container) and set up events
+  wrappers.forEach((wrapper, index) => {
+    const slider = sliders[index];
+    const afterImg = afterImgs[index];
+
+  // === This controls the slider without needing to hold and move ====
+    wrapper.addEventListener('mousemove', (e) => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateSlider(wrapper, slider, afterImg, e.clientX);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+
+    // Mouse down event to start dragging
+    wrapper.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      startX = e.clientX;
+    });
+
+    // Mouse up event to stop dragging
+    wrapper.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
+
+    // Mouse move event when dragging
+    wrapper.addEventListener('mousemove', (e) => {
+      if (isDragging) {
+        updateSlider(wrapper, slider, afterImg, e.clientX);
+      }
+    });
+
+    // === Touch events for mobile ===
+    wrapper.addEventListener('touchstart', (e) => {
+      isTouch = true;
+      startX = e.touches[0].clientX;  // Get the touch start position
+      isDragging = true;
+    });
+
+    wrapper.addEventListener('touchmove', (e) => {
+      if (isDragging) {
+        updateSlider(wrapper, slider, afterImg, e.touches[0].clientX);  // Use touch movement
+      }
+    });
+
+    wrapper.addEventListener('touchend', () => {
+      isDragging = false;
+      isTouch = false;
+    });
+
+    // Prevent default touch behavior to avoid page scrolling
+    wrapper.addEventListener('touchmove', (e) => {
+      e.preventDefault();
+    });
+  });
+};
+
+  </script>
+</body>
+</html>

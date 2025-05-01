@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap');
+
+/* General Body Style */
+body {
+    font-family: "Zain", sans-serif;
+    background-color: #f7f7e6;
+    color: #194031;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Main Heading Styles */
+h2 {
+    margin-bottom: 10px;  /* Reduced space */
+    font-size: clamp(25px, 5vw, 40px); /* Font size will scale between 24px and 50px, based on the viewport width */
+    color: #194031;
+}
+
+p{
+    max-width: 800px;
+    font-size: clamp(12.5px, 5vw, 25px); /* Font size will scale between 24px and 50px, based on the viewport width */
+}
+
+/* Section and Content Styles */
+section {
+    background: #b18500d1;
+    color: #1a1a1a;
+    border-radius: 8px;
+    padding: 20px; /* Reduced padding */
+    margin-bottom: 24px;
+    margin-left: 10px;  /* Adjust margin for small screens */
+    margin-right: 10px; /* Adjust margin for small screens */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    max-width: 1000px; /* Adjust width to make better use of space */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    min-height: 400px; /* Set minimum height for all sections */
+    box-sizing: border-box;
+    flex-grow: 1; /* Allow sections to grow and fill available space equally */
+    height: 100%; /* Allow sections to take full height */
+
+}
+
+/* === Image Container === */
+.ba-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px; /* Ensure container stays within the width limit */
+    padding: 0; /* Remove extra padding */
+    margin-top: 10px;  /* Reduce space above images */
+}
+
+/* === Image Wrapper (Equal Height for Both Sections) === */
+.ba-img-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio (you can change this to any ratio you want) */
+    overflow: hidden;
+    cursor: ew-resize;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;  /* Center images horizontally */
+    align-items: center;  /* Center images vertically */
+    background-color: #000;
+    height: 0;
+    flex-grow: 1;  /* Ensure both image wrappers have equal height */
+}
+
+/* === Image Style === */
+.ba-img {
+    width: 100%;  /* Ensure image width takes up full container */
+    height: 100%; /* Ensure image height fills the wrapper */
+    object-fit: cover;  /* Ensure image maintains aspect ratio while covering container */
+    position: absolute;
+    top: 0;
+    left: 0;
+    user-select: none;
+    pointer-events: none;
+    border-radius: 12px;
+}
+
+/* === Before and After Images === */
+.ba-img.before {
+    z-index: 1;
+}
+
+.ba-img.after {
+    z-index: 2;
+    clip-path: inset(0 50% 0 0); /* Initially show half of the 'after' image */
+}
+
+/* === The Draggable Slider Line === */
+.ba-slider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 6px;
+    background-color: #fff;
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+    transform: translateX(-50%);
+    z-index: 3;
+    pointer-events: auto; /* Allow interaction with the slider */
+}
+
+/* === Responsiveness for Small Screens === */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 32px; /* Smaller font size */
+        margin-bottom: 5px; /* Reduce space below header */
+        margin-top: 5px; /* Reduce space above header */
+    }
+
+    section {
+        padding: 15px; /* Reduce padding */
+        margin-left: 20px; /* Adjust margin for smaller screens */
+        margin-right: 20px; /* Adjust margin for smaller screens */
+        max-width: 100%; /* Ensure section width is not too large */
+        min-height: 300px;  /* Adjust the minimum height for smaller screens */
+    }
+
+    .ba-container {
+        max-width: 100%; /* Ensure image container is full-width */
+        padding: 5px;  /* Adjust padding */
+    }
+
+    .ba-img-wrapper {
+        padding-bottom: 56.25%; /* Keep the aspect ratio for the image */
+        overflow: hidden; /* Ensure images stay within bounds */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 28px; /* Smaller font size */
+        margin-top: 5px;  /* Reduced space above header */
+        margin-bottom: 5px; /* Reduced space below header */
+    }
+
+    section {
+        padding: 10px; /* Further reduce padding */
+        margin-left: 20px; /* Adjust left margin */
+        margin-right: 20px; /* Adjust right margin */
+        min-height: 300px; /* Prevent section from being too tall */
+    }
+
+    .ba-container {
+        max-width: 100%; /* Ensure container doesn't overflow */
+        padding: 0;  /* Remove extra padding */
+    }
+
+    .ba-img-wrapper {
+        padding-bottom: 56.25%; /* Maintain aspect ratio */
+        overflow: hidden; /* Ensure images are fully visible */
+    }
+
+    .ba-img {
+        width: 100%; /* Ensure image takes up full width */
+        height: 100%; /* Ensure image takes up full height */
+        object-fit: cover; /* Ensure image covers the container */
+    }
+}
+

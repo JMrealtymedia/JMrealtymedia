@@ -1,0 +1,314 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap');
+
+body {
+  font-family: "Playfair Display", sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background: #f7f7e6;
+  color: #000000;
+  overflow-x: hidden; /* No horizontal scrolling */
+}
+
+header {
+  background: url('Living-Room.JPG') center center / cover no-repeat;
+  width: 100%;
+  min-height: 40px;
+  margin: 0%;
+  padding: 15px;
+  position: relative;
+  text-align: center;
+  justify-content: center;
+  color:#f7f7e6;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+  z-index: 1;
+}
+
+header h1 {
+  font-size: 45px;
+  font-weight: 700;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+  color:#f7f7e6;
+  font-family: "Playfair Display", serif;
+  transition-duration: 0.5s;
+}
+
+header p {
+  font-size: 19.2px;
+  color:#f7f7e6;
+  position: relative;
+  z-index: 2;
+  padding: 0px;
+}
+
+/* === INTRO SECTION === */
+.intro {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 48px auto;
+  padding: 50px;
+  gap: 48px;
+}
+
+.intro-text,
+.intro-image {
+  flex: 1 1 40%;
+}
+
+.intro-text h2 {
+  font-family: "Zain", sans-serif;
+  font-weight: bolder;
+  margin-bottom: 16px;
+  font-size: clamp(24px, 5vw, 40px); /* This ensures font size stays between 24px and 40px, adjusting smoothly */
+}
+
+.intro-text p {
+  font-family: "Zain", sans-serif;
+  font-weight: 250;
+  line-height: 1.6;
+  font-size: clamp(10px, 3vw, 35px); /* This ensures font size stays between 10px and 35px, adjusting smoothly */
+}
+
+.intro-image img {
+  width: 80%;       /* Smaller than 100% */
+  max-width: 400px; /* Lower max size */
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 0px 14px rgba(0, 0, 0, 0.3);
+  margin: 0 auto;   /* Centers it inside its div */
+  display: block;
+}
+
+.services-wrapper {
+  position: relative;
+  background: url('DinningRoom.JPG') center/cover no-repeat;
+  overflow: hidden;
+  width: 100%;
+}
+
+.services-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+  z-index: 1;
+
+  padding: auto;
+
+}
+
+.services {
+  position: relative;
+  z-index: 2; /* Keeps content above overlay */
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: "PT Sans Narrow", sans-serif;
+  font-size: 22px;
+  color: #fff;
+
+  padding: 2rem; /* Add padding */
+
+}
+
+.services h2 {
+  text-align: center;
+  margin-bottom: 32px;
+  color: #fff;
+  font-size: 40px;
+}
+
+.package {
+  background: #f7f7e6; 
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  color: #000;
+
+  max-width: 1100px;
+}
+
+.package h3 {
+  margin-top: 0;
+  color: #194031;
+}
+
+.package ul {
+  padding-left: 20px;
+}
+
+.package ul li {
+  margin-bottom: 8px;
+}
+
+.price {
+  font-size: 27px;
+  font-weight: bold;
+  margin-top: 16px;
+  color: #222;
+}
+
+.contact{
+  text-align: center;
+  font-size: 35px;
+}
+
+.contact h2{
+  text-align: center;
+  font-size: 45px;
+  color: #ffffff;
+}
+
+.contact a{
+  color: #ffffff;;
+  font-size: 35px;
+}
+
+.price-button-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button-wrapper {
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
+  gap: 14px;
+}
+
+button{
+  margin-top: 22px;
+
+  padding: 8px 16px;
+  background-color: #194031;
+  color: white;
+
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: bold;
+
+  transition: all 0.6s ease; /* Slower transition */
+}
+
+button:hover{
+  transform: scale(1.15);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+  transform: scale(0.5);
+}
+
+
+footer {
+  text-align: center;
+  padding: 35px;
+  width: 100%;
+  background: #111;
+  color: #aaa;
+  margin-top: 32px;
+}
+
+/*This adjusts header font sizes for screen or webbrowsers with a pixel width of 600px or less*/
+@media (max-width: 600px) {
+  header h1 { 
+    font-size: 32px;
+  }
+}
+
+
+/* === RESPONSIVE FOR MOBILE === */
+@media (max-width: 750px) {
+
+  body{
+    overflow-x: hidden; /* No horizontal scrolling */
+  }
+
+  .intro {
+    flex-direction: column;
+    text-align: center;
+    gap: 32px;
+    padding: 30px;
+  }
+
+  .intro-text,
+  .intro-image {
+    flex: 1 1 80%;
+  }
+
+  .intro-text h2 {
+    font-size: 6vw;
+  }
+
+  .intro-text p {
+    font-size: 4.5vw;
+    padding: 0 10px;
+    margin: 0;
+  }
+
+  .intro-image img {
+    max-width: 60%;
+    max-height: 60%;
+  }
+
+  .services h2 {
+    font-size: 34px;
+  }
+
+  .price{ 
+    font-size: 5vw;
+  }
+
+  .package{
+    font-size: 20px;
+  }
+
+  button{
+    font-size: 3vw;
+    padding: 6px 14px;
+  }
+
+  .button-wrapper {
+    gap: 10px;
+  }
+
+  .contact h2{
+    font-size: 7vw;
+  }
+
+  .contact{
+    font-size: 20px;
+  }
+  
+
+  .contact a{
+    font-size: 20px;
+  }
+  
+}
+
+
+

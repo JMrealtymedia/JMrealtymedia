@@ -15,8 +15,14 @@ body {
     margin: 0;
 }
 
+h1{
+    font-size: 50px;
+    margin-bottom: 0px;
+}
+
 /* Main Heading Styles */
 h2 {
+    margin-top: 5px;
     margin-bottom: 10px;  /* Reduced space */
     font-size: clamp(25px, 5vw, 40px); /* Font size will scale between 24px and 50px, based on the viewport width */
     color: #194031;
@@ -27,9 +33,13 @@ p{
     font-size: clamp(12.5px, 5vw, 25px); /* Font size will scale between 24px and 50px, based on the viewport width */
 }
 
+.service-page-description{
+    margin-left: 5px;
+}
+
 /* Section and Content Styles */
 section {
-    background: #b18500d1;
+    background: #deb544d1;
     color: #1a1a1a;
     border-radius: 8px;
     padding: 20px; /* Reduced padding */
@@ -114,12 +124,49 @@ section {
     pointer-events: auto; /* Allow interaction with the slider */
 }
 
+iframe {
+    width: 100%;
+    max-width: 400px;       /* You can increase this for larger screens */
+    height: 640px;          /* Portrait height */
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    display: block;
+}
+
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.video-container video {
+    width: 100%;
+    max-width: 400px;      /* Reel width */
+    max-height: 700px;     /* Prevent huge videos */
+    aspect-ratio: 9 / 16;  /* Vertical reel format */
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    background-color: #000;
+}
+
+
 /* === Responsiveness for Small Screens === */
 @media (max-width: 768px) {
     h1 {
-        font-size: 32px; /* Smaller font size */
-        margin-bottom: 5px; /* Reduce space below header */
+        font-size: 40px; /* Smaller font size */
         margin-top: 5px; /* Reduce space above header */
+    }
+
+    .service-page-description{
+        margin-left: 5px;
+    }
+
+    p{
+        margin-top: 5px;
     }
 
     section {
@@ -143,10 +190,19 @@ section {
 
 @media (max-width: 480px) {
     h1 {
-        font-size: 28px; /* Smaller font size */
+        font-size: 36px; /* Smaller font size */
         margin-top: 5px;  /* Reduced space above header */
         margin-bottom: 5px; /* Reduced space below header */
     }
+
+    .service-page-description{
+        margin-left: 5px;
+    }
+
+    p{
+        margin-top: 5px;
+    }
+
 
     section {
         padding: 10px; /* Further reduce padding */
